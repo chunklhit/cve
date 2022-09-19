@@ -12,9 +12,9 @@ Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. All ve
 
 # Vul Details And Code in Application.go
 Argo CD Application module's APIs fetch Application info before rbac check.
-<br>If the application is not exit, APIs return msg info indicates the application doesn't exit in the system.
+<br>If the application is not exit, APIs return msg info indicates the application doesn't exit in the system.<br>
 ![avatar](img/fetch_before_rbac.png)
 
 # Poc
-The Application API (eg: /api/v1/applications/{name}/logs) return error msg.
+The Application API (eg: /api/v1/applications/{name}/logs) return error msg.<br>
 ![avatar](img/api_response_info.png)
