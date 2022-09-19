@@ -1,8 +1,8 @@
-Vendor of the products:　argo
+Vendor of the products:　Argo
 
 Reported by: 　　　　　 chunkl.hit@gmail.com
 
-Affected products:　　　argo-cd
+Affected products:　　　Argo-CD
 
 Vendor Homepage:       https://argo-cd.readthedocs.io/en/stable/
 
