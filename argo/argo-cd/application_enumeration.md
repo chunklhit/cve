@@ -19,6 +19,6 @@ Argo CD Application module's APIs fetch Application info before rbac check.
 The Application API (eg: /api/v1/applications/{name}/logs) return error msg.<br>
 ![avatar](img/poc-demo.jpg)
 
-# Response by official argo 
+# Reply by official argo 
 The official argo reply by email: There is an issue to track the breaking API change that would eliminate this problem: https://github.com/argoproj/argo-cd/issues/9906
 ![avatar](img/response.jpg)
