@@ -1,6 +1,6 @@
 Vendor of the products:　Argo
 
-Reported by: 　　　　　 chunkl.hit@gmail.com
+Reported by: 　　　　　 bean.zhang of HIT-IDS ChunkL Team
 
 Affected products:　　　Argo-CD
 
