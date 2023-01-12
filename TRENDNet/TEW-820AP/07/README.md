@@ -14,11 +14,11 @@ Firmware:                       https://downloads.trendnet.com/tew-820ap/firmwar
 
 # Vulnerability Details
 
-A stack overflow vulnerability exists in TrendNet Wireless AC Easy-Upgrader TEW-820AP (Version v1.0R, firmware version 1.01.B01) which may result in remote code execution or denial of service. The issue exists in the binary "boa" which resides in "/bin" folder, and the binary is responsible for serving http connection received by the device. While processing the post reuqest "/boafrm/formSystemCheck", the value of "ipv4_ping" parameter which can be arbitrarily long is copied onto stack memory by "sprintf" function (as shown at line 23-26 of Figure A), and could lead to a buffer overflow. The attackers can construct a payload to carry out arbitrary code attacks.
+A stack overflow vulnerability exists in TrendNet Wireless AC Easy-Upgrader TEW-820AP (Version v1.0R, firmware version 1.01.B01) which may result in remote code execution or denial of service. The issue exists in the binary "boa" which resides in "/bin" folder, and the binary is responsible for serving http connection received by the device. While processing the post reuqest "/boafrm/formWizardPassword", the value of "username" parameter (as shown at line 10 of Figure A) which could be arbitrarily long. The value of this parameter is copied into MIB database with key 182 by “apmib_set” function (as shown at line 13 of Figure A) which could lead to a buffer overflow when it is read and used again.
 
-<img src="./image/image-20221027144646497.png" alt="image-20221027144646497" style="zoom:25%;" />
+ <img src="./image/img-01.png" alt="image-01" style="zoom:25%;" />
 
-Figure A: The decompiled code which is vulnerable.
+Figure A: The decompiled code of function which read and use of the value of parameter "username".
 
 # Reproduce and POC
 
@@ -36,5 +36,5 @@ python3 POC_for_formWizardPassword.py 192.168.1.1
 
 The official TRENDNet has replied on official web site https://www.trendnet.com/support/view.asp?cat=4&id=87
 
-![image-20221209112147472](./image/image-20221209112147472.png)
+![image-20221209112147472](./image/img-03.png)
 

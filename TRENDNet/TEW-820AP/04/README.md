@@ -14,13 +14,13 @@ Firmware:                       https://downloads.trendnet.com/tew-820ap/firmwar
 
 # Vulnerability Details
 
-A stack overflow vulnerability exists in TrendNet Wireless AC Easy-Upgrader TEW-820AP (Version v1.0R, firmware version 1.01.B01) which may result in remote code execution or denial of service. The issue exists in the binary "boa" which resides in "/bin" folder, and the binary is responsible for serving http connection received by the device. While processing the post reuqest "/boafrm/formNewSchedule", the value of "submit-url" parameter (as shown at line 82-91 of Figure A) which can be arbitrarily long is copied onto stack memory by "sprintf" function (as shown at line 20 of Figure B), and could lead to a buffer overflow. The attackers can construct a payload to carry out arbitrary code attacks.
+A stack overflow vulnerability exists in TrendNet Wireless AC Easy-Upgrader TEW-820AP (Version v1.0R, firmware version 1.01.B01) which may result in remote code execution or denial of service. The issue exists in the binary "boa" which resides in "/bin" folder, and the binary is responsible for serving http connection received by the device. While processing the post reuqest "/boafrm/formSysLog", the value of "submit-url" parameter (as shown at line 40,207,218 of Figure A) which can be arbitrarily long is copied onto stack memory by "sprintf" function (as shown at line 20 of Figure B), and could lead to a buffer overflow. The attackers can construct a payload to carry out arbitrary code attacks.
 
- <img src="./image/image-20221027104231703.png" alt="image-20221027104231703" style="zoom:25%;" />
+ <img src="./image/img-01.png" alt="image-01" style="zoom:25%;" />
 
 Figure A: The decompiled code of function which read value of parameter "submit-url" and call send_redirect_perm function with the value as a parameter.
 
-<img src="./image/image-20221027104500584.png" alt="image-20221027104500584" style="zoom:25%;" />
+<img src="./image/img-02.png" alt="image-02" style="zoom:25%;" />
 
 Figure B: The decompiled code of function send_redirect_perm.
 
@@ -33,12 +33,12 @@ To reproduce the vulnerability, the following steps can be followed:
 3. Execute the poc script as follows:
 
 ```bash
-python3 POC_for_formNewSchedule.py 192.168.1.1
+python3 POC_for_formSysLog.py 192.168.1.1
 ```
 
 # Reply by Official 
 
 The official TRENDNet has replied on official web site https://www.trendnet.com/support/view.asp?cat=4&id=87
 
-![image-20221209112147472](./image/image-20221209112147472.png)
+![image-20221209112147472](./image/img-03.png)
 
